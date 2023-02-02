@@ -20,7 +20,7 @@ const ExpAction = (props) => {
         className="rainbow-m-around_medium"
       />
       <Button
-        label="Output Power Vs Armature Current"
+        label="Output Power Vs Current"
         onClick={()=>props.cnohandler(3)}
     
         variant="success"
