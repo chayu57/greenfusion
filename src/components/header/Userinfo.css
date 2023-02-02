@@ -1,0 +1,114 @@
+.user__info__container{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.user__details__container{
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+.user__logo__container{
+    width: 25%;
+}
+.signout__button__container{
+    width: 25%;
+}
+.username{
+    margin: 0.5rem;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+.role{
+    margin: 0.5rem;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+.user__logo {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.signout__Button {
+    width: 110px !important;
+    height: 110px !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .user__logo {
+        margin-left: 1rem;  
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .signout__Button {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .user__details__container{
+        width: 100%;
+    }
+    .username{
+        font-size: 1.5rem;
+        margin: 0.1rem;
+    }
+    .role{
+        font-size: 1rem;
+        margin: 0.1rem;
+    }
+}
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {}
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        .user__logo{
+            width: 65px !important;
+            height: 65px !important;
+        }
+        .username{
+            font-size: 1.3rem;
+        }
+        .role{
+            font-size: 1rem;
+        }
+        .signout__Button {
+            width: 55px !important;
+            height: 55px !important;
+        }
+        
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        .signout__Button{
+            width: 55px !important;
+            height: 55px !important;
+        }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {}
+    @media only screen and (orientation: landscape) {
+        .user__logo{
+            width: 65px !important;
+            height: 65px !important;
+        }
+        .username{
+            font-size: 1.3rem;
+        }
+        .role{
+            font-size: 1rem;
+        }
+        .signout__Button {
+            width: 55px !important;
+            height: 55px !important;
+        }
+      }

@@ -1,0 +1,27 @@
+.exp__actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.exp__actions__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    width: 600px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.exp__actions__container button{
+    margin:0.5rem 1rem; 
+}
+.cvFBfq {
+    background-color: orange !important;
+}
+.hjroYf {
+    background-color: palevioletred !important;
+}

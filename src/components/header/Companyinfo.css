@@ -1,0 +1,80 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Fruktur&display=swap');
+.company__logo__container{
+    margin: 0.5rem;
+    width: 30%;
+    
+}
+.company__name__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+}
+.hamburger__button__container{
+    width: 25%;
+
+}
+.company__name{
+    font-style: italic;
+    font-family: 'Bungee', cursive;
+    font-size: 2rem;
+}
+.hamburger__button{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1rem;
+    border-radius: 15%;
+}
+.company__logo{
+    height: 80px !important;
+    width: 80px !important;
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {   
+    .hamburger__button__container{
+        width: 20%;
+    }
+
+    .company__name__container{
+        width: 50%;
+        justify-content: flex-start;
+    }
+    .hamburger__button{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .company__logo{
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .company__name{
+        font-size: 1.1rem;
+    }
+  }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {     }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {  
+    .hamburger__button{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .company__logo{
+        width: 65px !important;
+        height: 65px !important;
+    }
+    .company__name{
+        font-size: 1.0rem;
+    }
+   }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {     }
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {     }
