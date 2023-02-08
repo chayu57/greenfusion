@@ -52,7 +52,7 @@ const CustomModal = (props) => {
       setYlabel("Efficiency (%)");
       setYdata(efficiency);
     } else if (props.chartno === 3) {
-      chartTitle = "Output Power Vs  Current";
+      chartTitle = "Output Power Vs  current";
       setColor("#256314");
       setYlabel("Current (A)");
       setYdata(current);
