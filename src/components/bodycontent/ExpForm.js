@@ -32,9 +32,9 @@ const ExpForm = (props) => {
   }, [differences1s2]);
 
   useEffect(() => {
-    const inputpower = voltage * current;
+    const inputpower = 1.732 * voltage * current * powerfactor;
     setInputPower(inputpower);
-  }, [voltage, current]);
+  }, [voltage, current, powerfactor]);
 
   useEffect(() => {
     const outputpower = (2 * 3.14 * speed * torque) / 60;

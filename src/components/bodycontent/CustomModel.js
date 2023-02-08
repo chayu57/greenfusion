@@ -28,13 +28,15 @@ const CustomModal = (props) => {
     let chartTitle, outputpower = [], speed = [], efficiency = [], current = [], torque = [];
     if (props.data) {
       if (props.data.length > 0) {
-        props.data.map((v, i) => (
-          outputpower.push(v.outputpower),
-          speed.push(v.speed),
-          efficiency.push(v.efficiency),
-          current.push(v.current),
-          torque.push(v.torque)
-        ))
+        props.data.map((v, i) => {
+          return (
+            outputpower.push(v.outputpower),
+            speed.push(v.speed),
+            efficiency.push(v.efficiency),
+            current.push(v.current),
+            torque.push(v.torque)
+          )
+        })
       }
 
     }
@@ -50,7 +52,7 @@ const CustomModal = (props) => {
       setYlabel("Efficiency (%)");
       setYdata(efficiency);
     } else if (props.chartno === 3) {
-      chartTitle = "Output Power Vs Armature Current";
+      chartTitle = "Output Power Vs  Current";
       setColor("#256314");
       setYlabel("Current (A)");
       setYdata(current);
@@ -61,7 +63,7 @@ const CustomModal = (props) => {
       setYdata(torque);
     }
 
-    const mheader = "Experiment " + props.expno + " " + chartTitle + " " + "Roll No: " + auth.rollno + " Name: " + auth.name;
+    const mheader = `Experiment: ${props.expno} ${chartTitle}  Roll No: ${auth.rollno}  Name: ${auth.name}`;
     setHeader(mheader);
   }, [props.chartno, props.expno, props.data, auth.name, auth.rollno]);
 
