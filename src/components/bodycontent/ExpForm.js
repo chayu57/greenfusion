@@ -53,8 +53,8 @@ const ExpForm = (props) => {
         "Authorization": "Bearer " + auth.token
       },
     };
-    // console.log(requestOptions);
-    fetch(config.SERVER.URL + "/api/sensordata", requestOptions)
+   // console.log(requestOptions);
+    fetch(config.SERVER.URL+"/api/sensordata", requestOptions)
       .then(async (result) => {
         const data = await result.json();
         //console.log(data);
