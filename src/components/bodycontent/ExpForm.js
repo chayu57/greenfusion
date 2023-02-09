@@ -25,17 +25,14 @@ const ExpForm = (props) => {
     const diffs1s2 = s1 - s2;
     setDifferences1s2(diffs1s2)
 
+    
   }, [s1, s2]);
   useEffect(() => {
     const Torque = 9.81 * 0.15 * differences1s2;
     setTorque(Torque);
   }, [differences1s2]);
 
-  useEffect(() => {
-    const inputpower = 1.732 * voltage * current * powerfactor;
-    setInputPower(inputpower);
-  }, [voltage, current, powerfactor]);
-
+  
   useEffect(() => {
     const outputpower = (2 * 3.14 * speed * torque) / 60;
     setOutputPower(outputpower);
@@ -66,6 +63,7 @@ const ExpForm = (props) => {
         setCurrent(data.current);
         setSpeed(data.speed);
         setPowerfactor(data.powerfactor);
+        setInputPower(data.inputPower);
       }).catch((err) => {
         console.log(err);
       });
@@ -148,7 +146,7 @@ const ExpForm = (props) => {
       <FormInput label={"powerfactor"} value={powerfactor} disabled={true} />
       <FormInput label={"S1-S2"} value={differences1s2} disabled={true} />
       <FormInput label={"Torque (N-m)"} value={torque} disabled={true} />
-      <FormInput label={"Input Power (W)"} value={inputPower} disabled={true} />
+      <FormInput label={"Input Power (W)"} value={inputPower} disabled={false} />
       <FormInput
         label={"Output Power (W)"}
         value={outputPower}
