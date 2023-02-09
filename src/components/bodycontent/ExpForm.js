@@ -146,7 +146,7 @@ const ExpForm = (props) => {
       <FormInput label={"powerfactor"} value={powerfactor} disabled={true} />
       <FormInput label={"S1-S2"} value={differences1s2} disabled={true} />
       <FormInput label={"Torque (N-m)"} value={torque} disabled={true} />
-      <FormInput label={"Input Power (W)"} value={inputPower} disabled={false} />
+      <FormInput label={"Input Power (W)"} value={inputPower} disabled={true} />
       <FormInput
         label={"Output Power (W)"}
         value={outputPower}
