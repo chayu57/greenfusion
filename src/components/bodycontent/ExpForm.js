@@ -16,7 +16,7 @@ const ExpForm = (props) => {
   const [powerfactor, setPowerfactor] = useState("");
   const [differences1s2, setDifferences1s2] = useState(s1 - s2);
   const [torque, setTorque] = useState("");
-  const [inputPower, setInputPower] = useState("");
+  const [inputpower, setInputpower] = useState("");
   const [outputPower, setOutputPower] = useState("");
   const [efficiency, setEfficiency] = useState("");
   const auth = useContext(AuthContext);
@@ -32,6 +32,13 @@ const ExpForm = (props) => {
     setTorque(Torque);
   }, [differences1s2]);
 
+  useEffect(() => {
+    const inputpower = voltage * current *powerfactor*3;
+    setInputpower(inputpower);
+  }, [voltage, current, powerfactor]);
+
+  
+
   
   useEffect(() => {
     const outputpower = (2 * 3.14 * speed * torque) / 60;
@@ -39,31 +46,35 @@ const ExpForm = (props) => {
   }, [speed, torque]);
 
   useEffect(() => {
-    const Efficiency = (outputPower / inputPower) * 100;
+    const Efficiency = (outputPower / inputpower) * 100;
     setEfficiency(Efficiency);
-  }, [outputPower, inputPower]);
+  }, [outputPower, inputpower]);
 
 
 
   const getdataHandler = () => {
     const requestOptions = {
+    
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + auth.token
       },
     };
-   // console.log(requestOptions);
+   console.log(requestOptions);
     fetch(config.SERVER.URL+"/api/sensordata", requestOptions)
       .then(async (result) => {
         const data = await result.json();
-        //console.log(data);
+        console.log(data);
         setDateTime(data.timestamp);
         setVoltage(data.voltage);
         setCurrent(data.current);
         setSpeed(data.speed);
+        
         setPowerfactor(data.powerfactor);
-        setInputPower(data.inputPower);
+        
+        
+        
       }).catch((err) => {
         console.log(err);
       });
@@ -93,7 +104,7 @@ const ExpForm = (props) => {
       diffs1s2: differences1s2,
       powerfactor: parseFloat(powerfactor),
       torque: parseFloat(torque),
-      inputpower: parseFloat(inputPower),
+      inputpower: parseFloat(inputpower),
       outputpower: parseFloat(outputPower),
       efficiency: parseFloat(efficiency),
       exp: exp
@@ -146,7 +157,7 @@ const ExpForm = (props) => {
       <FormInput label={"powerfactor"} value={powerfactor} disabled={true} />
       <FormInput label={"S1-S2"} value={differences1s2} disabled={true} />
       <FormInput label={"Torque (N-m)"} value={torque} disabled={true} />
-      <FormInput label={"Input Power (W)"} value={inputPower} disabled={true} />
+      <FormInput label={"Input Power (W)"} value={inputpower} disabled={true} />
       <FormInput
         label={"Output Power (W)"}
         value={outputPower}
