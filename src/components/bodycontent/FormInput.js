@@ -10,7 +10,7 @@ const FormInput = (props) => {
      return (
           <Input
                label={props.label}
-               value={props.value ? props.value : ""}
+               value={props.value}
                disabled={props.disabled}
                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto form__inputs"
                onChange={inputHandler}

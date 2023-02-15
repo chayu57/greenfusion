@@ -7,36 +7,37 @@ import { AuthContext } from "../../context/auth-context";
 import config from "../../utils/config.json";
 
 const ExpForm = (props) => {
-  const [dateTime, setDateTime] = useState("");
-  const [voltage, setVoltage] = useState("");
-  const [current, setCurrent] = useState("");
-  const [speed, setSpeed] = useState("");
-  const [s1, setS1] = useState("");
-  const [s2, setS2] = useState("");
-  const [powerfactor, setPowerfactor] = useState("");
+  const [dateTime, setDateTime] = useState();
+  const [voltage, setVoltage] = useState();
+  const [current, setCurrent] = useState();
+  const [speed, setSpeed] = useState();
+  const [s1, setS1] = useState();
+  const [s2, setS2] = useState();
+  const [powerfactor, setPowerfactor] = useState();
   const [differences1s2, setDifferences1s2] = useState(s1 - s2);
-  const [torque, setTorque] = useState("");
-  const [inputPower, setInputPower] = useState("");
-  const [outputPower, setOutputPower] = useState("");
-  const [efficiency, setEfficiency] = useState("");
+  const [torque, setTorque] = useState();
+  const [inputPower, setInputPower] = useState();
+  const [outputPower, setOutputPower] = useState();
+  const [efficiency, setEfficiency] = useState();
   const auth = useContext(AuthContext);
+  const pi = Math.PI
 
   useEffect(() => {
     const diffs1s2 = s1 - s2;
-    setDifferences1s2(diffs1s2)  
+    setDifferences1s2(diffs1s2)
   }, [s1, s2]);
 
   useEffect(() => {
-    const Torque = 9.81 * 0.15 * differences1s2;
+    const Torque = 9.81 * 0.1 * differences1s2;
     setTorque(Torque);
   }, [differences1s2]);
 
- 
+
 
   useEffect(() => {
-    const outputpower = (2 * 3.14 * speed * torque) / 60;
+    const outputpower = (2 * pi * speed * torque) / 60;
     setOutputPower(outputpower);
-  }, [speed, torque]);
+  }, [speed, torque, pi]);
 
   useEffect(() => {
     const Efficiency = (outputPower / inputPower) * 100;
@@ -52,8 +53,8 @@ const ExpForm = (props) => {
         "Authorization": "Bearer " + auth.token
       },
     };
-   console.log(requestOptions);
-    fetch(config.SERVER.URL+"/api/sensordata", requestOptions)
+    console.log(requestOptions);
+    fetch(config.SERVER.URL + "/api/sensordata", requestOptions)
       .then(async (result) => {
         const data = await result.json();
         console.log(data);
@@ -61,7 +62,7 @@ const ExpForm = (props) => {
         setVoltage(data.voltage);
         setCurrent(data.current);
         setSpeed(data.speed);
-        setPowerfactor(data.powerfactor); 
+        setPowerfactor(data.powerfactor);
         setInputPower(data.inputpower);
       }).catch((err) => {
         console.log(err);
@@ -95,7 +96,8 @@ const ExpForm = (props) => {
       inputpower: parseFloat(inputPower),
       outputpower: parseFloat(outputPower),
       efficiency: parseFloat(efficiency),
-      exp: exp
+      exp: exp,
+      
     };
 
     const requestOptions = {
@@ -146,10 +148,10 @@ const ExpForm = (props) => {
       <FormInput label={"S1-S2"} value={differences1s2} disabled={true} />
       <FormInput label={"Torque (N-m)"} value={torque} disabled={true} />
       <FormInput label={"Input Power (W)"} value={inputPower} disabled={true} />
-      <FormInput 
-         label={"Output Power (W)"}
-         value={outputPower}
-         disabled={true}/>
+      <FormInput
+        label={"Output Power (W)"}
+        value={outputPower}
+        disabled={true} />
       <FormInput label={"Efficiency (%)"} value={efficiency} disabled={true} />
       <div className="form__button__container">
         <Button
