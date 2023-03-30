@@ -1,5 +1,5 @@
 import "./ExpForm.css";
-import { Card } from "react-rainbow-components";
+import { Card} from "react-rainbow-components";
 import FormInput from "./FormInput";
 import { useContext, useEffect, useState } from "react";
 import { Button } from "react-rainbow-components";
@@ -29,19 +29,19 @@ const ExpForm = (props) => {
 
   useEffect(() => {
     const Torque = 9.81 * 0.1 * differences1s2;
-    setTorque(Torque);
+    setTorque(Torque.toFixed(2));
   }, [differences1s2]);
 
 
 
   useEffect(() => {
     const outputpower = (2 * pi * speed * torque) / 60;
-    setOutputPower(outputpower);
+    setOutputPower(outputpower.toFixed(2));
   }, [speed, torque, pi]);
 
   useEffect(() => {
     const Efficiency = (outputPower / inputPower) * 100;
-    setEfficiency(Efficiency);
+    setEfficiency(Efficiency.toFixed(2));
   }, [outputPower, inputPower]);
 
 
@@ -99,6 +99,7 @@ const ExpForm = (props) => {
       exp: exp,
       
     };
+  
 
     const requestOptions = {
       method: "POST",
@@ -165,10 +166,11 @@ const ExpForm = (props) => {
           onClick={formSubmitHandler}
           variant="success"
           className="rainbow-m-around_medium"
-        />
-      </div>
-
+        /> </div>
+     
+     
     </Card>
+     
 
   );
 };
